@@ -1,0 +1,3 @@
+Elena,Lena,L123,0.0,Boliviano
+Yummi,Yumisar,Y123,1991.238550378335,Boliviano
+Joseph,joe123,123,76.0037456695792,Boliviano
