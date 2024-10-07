@@ -14,13 +14,18 @@ import manejoarchivos.Cliente;
 import static ventanas.Login.banco;
 
 /**
- *
- * @author JHAK
+ * Clase que representa la ventana de registro de usuarios para el Cajero Automático PROTECH.
+ * Esta clase extiende de JFrame y permite al usuario registrarse en el sistema.
+ * 
+ * @author Joseph Humerez
+ * @version 1.0
  */
 public class Registro extends javax.swing.JFrame {
 
     /**
-     * Creates new form Registro
+     * Constructor que inicializa la ventana de registro.
+     * Configura el tamaño, título y ubicación de la ventana,
+     * así como las imágenes de fondo y del logo.
      */
     public Registro() {
         initComponents();
@@ -41,7 +46,12 @@ public class Registro extends javax.swing.JFrame {
         this.repaint();
     }
     
-    
+ /**
+ * Sobrescribe el método getIconImage para establecer el icono de la aplicación.
+ * Cambia la dirección del icono debido a un error en la carpeta de recursos.
+ *
+ * @return La imagen del icono que se establecerá como icono de la ventana.
+ */
     @Override
     public Image getIconImage() {  //CAMBIAR DIRECCION DEL ICONO POR ERROR DE CARPETA DE RECURSOS
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/logo_protech.png"));
@@ -161,6 +171,14 @@ public class Registro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Acción que se ejecuta al hacer clic en el botón "Registrar".
+ * Obtiene los datos ingresados por el usuario y los registra en el sistema.
+ * Si el registro es exitoso, se muestra un mensaje de éxito, 
+ * de lo contrario, indica que el nombre ya está en uso.
+ *
+ * @param evt el evento de acción generado por el clic en el botón "Registrar".
+ */
     private void jButton_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegistrarActionPerformed
         String nombre = jTextField_Nombre.getText();
         String contraseña = jTextField_Contrasenia.getText();
@@ -173,14 +191,22 @@ public class Registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_RegistrarActionPerformed
 
+ /**
+ * Acción que se ejecuta al hacer clic en el botón "Volver".
+ * Vuelve a la pantalla de inicio de sesión (Login) y oculta la ventana actual.
+ *
+ * @param evt el evento de acción generado por el clic en el botón "Volver".
+ */
     private void jButton_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VolverActionPerformed
         new Login().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_VolverActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ /**
+ * Método principal que inicializa la interfaz de registro.
+ *
+ * @param args los argumentos de línea de comandos.
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
