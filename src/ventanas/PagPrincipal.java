@@ -17,8 +17,10 @@ import java.text.DecimalFormat;
 
 
 /**
- *
- * @author JHAK
+ * PagPrincipal - Clase que representa la página principal del Cajero Automático PROTECH.
+ * 
+ * @author Joseph Humerez
+ * @version 1.0
  */
 public class PagPrincipal extends javax.swing.JFrame {
 
@@ -71,6 +73,11 @@ public class PagPrincipal extends javax.swing.JFrame {
     }
 
     
+ /**
+ * Obtiene la imagen del icono para la ventana.
+ *
+ * @return La imagen del icono de la ventana.
+ */
     @Override
     public Image getIconImage() {  //CAMBIAR DIRECCION DEL ICONO POR ERROR DE CARPETA DE RECURSOS
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/logo_protech.png"));
@@ -184,34 +191,72 @@ public class PagPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Maneja la acción del botón para terminar el programa.
+ * Este método cierra la aplicación.
+ *
+ * @param evt El evento de acción generado al pulsar el botón.
+ */
     private void jButton_TerminarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TerminarProgramaActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton_TerminarProgramaActionPerformed
 
+ /**
+ * Maneja la acción del botón para convertir moneda.
+ * Este método muestra la ventana de conversión de moneda 
+ * y oculta la ventana actual.
+ *
+ * @param evt El evento de acción generado al pulsar el botón.
+ */
     private void jButton_ConvertirMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ConvertirMonedaActionPerformed
         new ConvMoneda().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_ConvertirMonedaActionPerformed
 
+ /**
+ * Maneja la acción del botón para ver el saldo actual.
+ * Este método muestra un cuadro de diálogo con el saldo actual 
+ * del cliente formateado y su moneda.
+ *
+ * @param evt El evento de acción generado al pulsar el botón.
+ */
     private void jButton_VerSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VerSaldoActionPerformed
         DecimalFormat df = new DecimalFormat("#.##");
         String valorFormateado = df.format(clienteActual.getSaldo());
         JOptionPane.showMessageDialog(null, "Saldo Actual: " + valorFormateado + " " + clienteActual.getMoneda());
     }//GEN-LAST:event_jButton_VerSaldoActionPerformed
 
+ /**
+ * Maneja la acción del botón para abrir la ventana de depósito.
+ * Este método crea una nueva instancia de la clase Depositar
+ * y oculta la ventana actual.
+ *
+ * @param evt El evento de acción generado al pulsar el botón.
+ */
     private void jButton_DepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DepositarActionPerformed
         new Depositar().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_DepositarActionPerformed
 
+ /**
+ * Maneja la acción del botón para abrir la ventana de retiro.
+ * Este método crea una nueva instancia de la clase Retirar
+ * y oculta la ventana actual.
+ *
+ * @param evt El evento de acción generado al pulsar el botón.
+ */
     private void jButton_RetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RetirarActionPerformed
         new Retirar().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_RetirarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ /**
+ * Método principal para ejecutar la aplicación.
+ * Configura el look and feel de Nimbus, si está disponible,
+ * y lanza la ventana principal del programa.
+ *
+ * @param args los argumentos de la línea de comandos.
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
