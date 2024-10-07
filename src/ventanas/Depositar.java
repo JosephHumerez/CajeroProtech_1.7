@@ -15,41 +15,56 @@ import static ventanas.Login.banco;
 import static ventanas.Login.clienteActual;
 
 /**
- *
- * @author JHAK
+ * Esta clase representa la ventana de la funcionalidad de depósito en el
+ * cajero automático PROTECH. Extiende la clase JFrame de Swing para crear
+ * una interfaz gráfica donde los usuarios pueden realizar depósitos.
+ * 
+ * @author Joseph Humerez
  */
-
 public class Depositar extends javax.swing.JFrame {
 
    
     /**
-     * Creates new form Depositar
+     * Crea una nueva instancia de la clase Depositar.
+     * Inicializa los componentes de la interfaz gráfica, configura
+     * las propiedades de la ventana y establece los iconos de imagen
+     * para el fondo, el logo y el ícono de depósito.
      */
     public Depositar() {
         initComponents();
        
+        // Configura el tamaño de la ventana
         setSize(400, 600);
         setResizable(false);
         setTitle("Depositar - Cajero Automatico PROTECH");
         setLocationRelativeTo(null);
         
+        // Carga y establece el icono del fondo de la ventana
         ImageIcon wallpaper= new ImageIcon("src/images/fondo_login.png");
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(), jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Wallpaper.setIcon(icono);
         this.repaint();
         
+        // Carga y establece el logo de la aplicación
         ImageIcon wallpaper_logo= new ImageIcon("src/images/logo_protech.png");
         Icon icono_logo = new ImageIcon(wallpaper_logo.getImage().getScaledInstance(jLabel_Logo.getWidth(), jLabel_Logo.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Logo.setIcon(icono_logo);
         this.repaint();
         
-        //Imagen de Depositar
+        // Carga y establece el ícono de depósito
         ImageIcon ImagDepositar= new ImageIcon("src/images/donar.png");
         Icon icono_depositar = new ImageIcon(ImagDepositar.getImage().getScaledInstance(jLabel_ImaDepositar.getWidth(), jLabel_ImaDepositar.getHeight(), Image.SCALE_DEFAULT));
         jLabel_ImaDepositar.setIcon(icono_depositar);
         this.repaint();
     }
     
+ /**
+ * Devuelve la imagen del icono de la ventana.
+ * Este método sobrescribe el método de la clase JFrame para proporcionar
+ * un icono personalizado para la ventana del cajero automático.
+ * 
+ * @return La imagen del icono que se mostrará en la barra de título de la ventana.
+ */
     @Override
     public Image getIconImage() {  //CAMBIAR DIRECCION DEL ICONO POR ERROR DE CARPETA DE RECURSOS
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/logo_protech.png"));
@@ -132,11 +147,26 @@ public class Depositar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Maneja la acción del botón "Volver".
+ * Este método se invoca cuando se hace clic en el botón "Volver".
+ * Cierra la ventana actual y muestra la ventana principal del cajero automático.
+ * 
+ * @param evt El evento de acción que se genera al hacer clic en el botón.
+ */
     private void jButton_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VolverActionPerformed
         new PagPrincipal().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_VolverActionPerformed
 
+ /**
+ * Maneja la acción del botón "Depositar".
+ * Este método se invoca cuando se hace clic en el botón para realizar un depósito.
+ * Toma la cantidad a depositar desde un campo de texto, la agrega al saldo del cliente,
+ * actualiza la interfaz con el nuevo saldo y guarda los cambios en el archivo.
+ * 
+ * @param evt El evento de acción que se genera al hacer clic en el botón.
+ */
     private void jButton_AccionDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AccionDepositarActionPerformed
         double cantidad = Double.parseDouble(jTextField_MontoDepositar.getText());
         DecimalFormat df = new DecimalFormat("#.##");
@@ -147,9 +177,16 @@ public class Depositar extends javax.swing.JFrame {
         banco.guardarClientes(); // Guardar cambios en el archivo
     }//GEN-LAST:event_jButton_AccionDepositarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ /**
+ * Punto de entrada para la aplicación Depositar.
+ * Este método configura la apariencia de la interfaz de usuario
+ * y crea una nueva instancia de la ventana Depositar, 
+ * haciéndola visible. Intenta establecer el look and feel Nimbus 
+ * si está disponible; de lo contrario, utiliza el look and feel 
+ * predeterminado.
+ *
+ * @param args Los argumentos de línea de comandos, que no se utilizan en este caso.
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
