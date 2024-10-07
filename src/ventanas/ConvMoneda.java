@@ -15,16 +15,28 @@ import static ventanas.Login.banco;
 import java.text.DecimalFormat;
 
 /**
- *
- * @author JHAK
+ * Clase que representa la ventana de conversión de monedas en la interfaz gráfica.
+ * 
+ * <p>Esta clase extiende {@code javax.swing.JFrame} y se encarga de
+ * inicializar la ventana de conversión de monedas, estableciendo sus componentes
+ * gráficos y configuraciones iniciales.
+ * 
+ * @author Joseph Humerez
+ * @version 1.0
  */
 public class ConvMoneda extends javax.swing.JFrame {
 
     /**
-     * Creates new form Abonar
+     * Objeto que maneja la conversión de monedas.
      */
     private Convertir moneda;
 
+    /**
+     * Crea una nueva instancia de la clase {@code ConvMoneda}.
+     * 
+     * <p>Inicializa los componentes de la ventana, establece el tamaño,
+     * título, y agrega las imágenes de fondo y logotipo.
+     */
     public ConvMoneda() {
         initComponents();
         setSize(400, 600);
@@ -49,6 +61,15 @@ public class ConvMoneda extends javax.swing.JFrame {
         this.repaint();
     }
 
+ /**
+ * Devuelve la imagen del icono que se mostrará en la ventana.
+ * 
+ * <p>Este método sobrescribe el método {@code getIconImage()} de la clase {@code JFrame}
+ * para proporcionar una imagen personalizada como icono de la ventana.
+ * La dirección del icono debe ser actualizada si hay un error en la ruta de los recursos.
+ * 
+ * @return La imagen del icono de la ventana.
+ */
     @Override
     public Image getIconImage() {  //CAMBIAR DIRECCION DEL ICONO POR ERROR DE CARPETA DE RECURSOS
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/logo_protech.png"));
@@ -141,11 +162,31 @@ public class ConvMoneda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Maneja el evento de acción del botón "Volver".
+ * 
+ * <p>Este método es llamado cuando el usuario hace clic en el botón "Volver".
+ * Crea una nueva instancia de la clase {@code PagPrincipal} y la hace visible,
+ * ocultando la ventana actual.
+ * 
+ * @param evt El evento de acción que contiene información sobre la acción del botón.
+ */
     private void jButton_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VolverActionPerformed
         new PagPrincipal().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_VolverActionPerformed
 
+ /**
+ * Maneja el evento de acción del botón "Convertir Moneda".
+ * 
+ * <p>Este método se ejecuta cuando el usuario hace clic en el botón "Convertir Moneda".
+ * Obtiene la entrada de la moneda a convertir del campo de texto, 
+ * valida la entrada y, si es válida, intenta realizar la conversión de moneda
+ * para el cliente actual. Actualiza el saldo y la moneda en la interfaz de usuario
+ * y muestra mensajes de éxito o error según corresponda.
+ *
+ * @param evt El evento de acción que contiene información sobre la acción del botón.
+ */
     private void jButton_ConvertirMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ConvertirMonActionPerformed
         String tipoMoneda = jTextField_MonedaConv.getText(); // Obtener la entrada de la moneda
         String tipoMonedaA = clienteActual.getMoneda(); // Moneda actual del cliente
@@ -176,9 +217,15 @@ public class ConvMoneda extends javax.swing.JFrame {
         jTextField_MonedaConv.setText(""); // Limpiar el campo de texto       
     }//GEN-LAST:event_jButton_ConvertirMonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+/**
+ * Método principal que inicia la aplicación de conversión de monedas.
+ *
+ * <p>Este método configura el aspecto de la interfaz de usuario utilizando el look and feel 
+ * Nimbus, si está disponible. Luego, crea y muestra una nueva instancia de 
+ * {@link ConvMoneda}, que es la ventana principal para realizar conversiones de moneda.
+ *
+ * @param args Argumentos de línea de comandos (no se utilizan en esta aplicación).
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
