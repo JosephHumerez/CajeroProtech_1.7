@@ -14,16 +14,39 @@ import manejoarchivos.Cliente;
 
 
 /**
- *
- * @author JHAK
+ * Esta clase representa la ventana de inicio de sesión del sistema de 
+ * cajero automático PROTECH. Extiende de `javax.swing.JFrame` y 
+ * proporciona la interfaz para que los usuarios ingresen sus 
+ * credenciales. 
+ * 
+ * La clase contiene referencias al banco y al cliente actual, 
+ * permitiendo la gestión de la sesión del usuario una vez que 
+ * inicie sesión correctamente.
+ * 
+ * @author Joseph Humerez
+ * @version 1.0
  */
 public class Login extends javax.swing.JFrame {
     /**
-     * Creates new form Login
+     * Instancia del objeto Banco que contiene la información 
+     * de los clientes y gestiona las operaciones relacionadas con 
+     * ellos.
      */
     public static Banco banco;
+    
+    /**
+     * Instancia del objeto Cliente que representa al cliente 
+     * actual que ha iniciado sesión en el sistema.
+     */
     public static Cliente clienteActual;
     
+    /**
+     * Crea una nueva ventana de inicio de sesión.
+     * Inicializa los componentes de la interfaz gráfica de usuario, 
+     * establece las propiedades de la ventana y carga las imágenes 
+     * de fondo y del logo. La ventana tiene un tamaño fijo y 
+     * se centra en la pantalla.
+     */
     public Login() {
         initComponents();
         banco = new Banco();
@@ -46,6 +69,11 @@ public class Login extends javax.swing.JFrame {
     }
     
     
+ /**
+ * Obtiene la imagen del ícono para la ventana de la aplicación.
+ * 
+ * @return la imagen del ícono.
+ */
     @Override
     public Image getIconImage() {  //CAMBIAR DIRECCION DEL ICONO POR ERROR DE CARPETA DE RECURSOS
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/logo_protech.png"));
@@ -53,7 +81,6 @@ public class Login extends javax.swing.JFrame {
 }
 
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,11 +159,27 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Maneja la acción del botón de registro.
+ * Este método se invoca cuando se hace clic en el botón de registro.
+ * Abre la ventana de registro y oculta la ventana actual.
+ * 
+ * @param evt el evento de acción que se produjo.
+ */
     private void jButton_RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegistrarActionPerformed
         new Registro().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_RegistrarActionPerformed
 
+ /**
+ * Maneja la acción del botón de acceso.
+ * Este método se invoca cuando se hace clic en el botón de acceso.
+ * Intenta autenticar al usuario con el nombre y contraseña proporcionados.
+ * Si las credenciales son válidas, abre la ventana de la página principal y oculta la ventana actual.
+ * Si las credenciales son inválidas, muestra un mensaje de error.
+ * 
+ * @param evt el evento de acción que se produjo.
+ */
     private void jButton_AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AccederActionPerformed
         String nombre = jTextField_User.getText();
         String contraseña = jPasswordField_Pass.getText();
@@ -149,9 +192,13 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_AccederActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ /**
+ * Método principal de la aplicación.
+ * Este método establece la apariencia y el estilo de la interfaz de usuario 
+ * y crea y muestra la ventana de inicio de sesión.
+ * 
+ * @param args los argumentos de línea de comandos.
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
