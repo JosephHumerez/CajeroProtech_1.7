@@ -16,44 +16,47 @@ import static ventanas.Login.banco;
 import static ventanas.Login.clienteActual;
 
 /**
+ * Clase para la ventana de Retiro en el Cajero Automático PROTECH.
  *
- * @author JHAK
+ * @author Joseph Humerez
+ * @version 1.0
  */
-
-
-
 public class Retirar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Retirar
-     */
-    
-    
     public Retirar() {
         initComponents();
         
+        // Configuración de la ventana
         setSize(400, 600);
         setResizable(false);
         setTitle("Retiro - Cajero Automatico PROTECH");
         setLocationRelativeTo(null);
         
+        // Establecer fondo de pantalla
         ImageIcon wallpaper= new ImageIcon("src/images/fondo_login.png");
         Icon icono = new ImageIcon(wallpaper.getImage().getScaledInstance(jLabel_Wallpaper.getWidth(), jLabel_Wallpaper.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Wallpaper.setIcon(icono);
         this.repaint();
         
+        // Establecer logo del cajero
         ImageIcon wallpaper_logo= new ImageIcon("src/images/logo_protech.png");
         Icon icono_logo = new ImageIcon(wallpaper_logo.getImage().getScaledInstance(jLabel_Logo.getWidth(), jLabel_Logo.getHeight(), Image.SCALE_DEFAULT));
         jLabel_Logo.setIcon(icono_logo);
         this.repaint();
         
-        //Imagen de Retirar
+        // Establecer imagen de retiro
         ImageIcon imagRetirar= new ImageIcon("src/images/dinero_soporte.png");
         Icon icono_retirar = new ImageIcon(imagRetirar.getImage().getScaledInstance(jLabel_ImaRetirar.getWidth(), jLabel_ImaRetirar.getHeight(), Image.SCALE_DEFAULT));
         jLabel_ImaRetirar.setIcon(icono_retirar);
         this.repaint();
     }
 
+ /**
+ * Sobrescribe el método getIconImage para establecer el ícono de la ventana.
+ * La imagen se obtiene desde los recursos del proyecto.
+ * 
+ * @return El ícono de la ventana.
+ */
     @Override
     public Image getIconImage() {  //CAMBIAR DIRECCION DEL ICONO POR ERROR DE CARPETA DE RECURSOS
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("images/logo_protech.png"));
@@ -141,11 +144,27 @@ public class Retirar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+ /**
+ * Maneja la acción del botón "Volver".
+ * Este método se ejecuta cuando se hace clic en el botón "Volver".
+ * Cierra la ventana actual y muestra la página principal del cajero automático.
+ * 
+ * @param evt El evento de acción que desencadena este método.
+ */
     private void jButton_VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_VolverActionPerformed
         new PagPrincipal().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton_VolverActionPerformed
 
+ /**
+ * Maneja la acción del botón "Retirar".
+ * Este método se ejecuta cuando se hace clic en el botón para retirar dinero.
+ * Intenta retirar una cantidad especificada por el usuario. Si el retiro es exitoso,
+ * se actualiza el saldo en la interfaz y se guardan los cambios. Si no, se muestra un
+ * mensaje de error indicando que los fondos son insuficientes.
+ * 
+ * @param evt El evento de acción que desencadena este método.
+ */
     private void jButton_AccionRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AccionRetirarActionPerformed
         double cantidad = Double.parseDouble(jTextField_MontoRetirar.getText());
         DecimalFormat df = new DecimalFormat("#.##");
@@ -159,9 +178,13 @@ public class Retirar extends javax.swing.JFrame {
         jLabel_SaldoActual.setText("");
     }//GEN-LAST:event_jButton_AccionRetirarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ /**
+ * El punto de entrada principal para la aplicación.
+ * Este método configura la apariencia del sistema y crea y muestra 
+ * la ventana principal de la clase Retirar.
+ *
+ * @param args Los argumentos de la línea de comandos (no se utilizan en esta implementación).
+ */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
