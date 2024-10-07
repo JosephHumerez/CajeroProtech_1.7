@@ -5,26 +5,51 @@
 package manejoarchivos;
 
 /**
- *
- * @author HP
+ * Clase que maneja la conversión de monedas.
+ * 
+ * <p>Esta clase permite convertir un valor monetario de una moneda a otra,
+ * utilizando tasas de conversión predefinidas.
+ * 
+ * @author Joseph Humerez
+ * @version 1.0
  */
 public class Convertir {
 
-    private String moneda;
-    private double valorMonetario;
-    private double saldo;
-    private String monedaAnterior;
+    private String moneda; // La moneda actual en la que se encuentra el saldo
+    private double valorMonetario; // El valor monetario a convertir
+    private double saldo; // El saldo del cliente que se va a convertir
+    private String monedaAnterior; // La moneda anterior antes de la conversion
 
+    /**
+     * Constructor de la clase Convertir.
+     * 
+     * <p>Inicializa un nuevo objeto Convertir con los datos de moneda,
+     * saldo y moneda anterior.
+     * 
+     * @param moneda La moneda actual.
+     * @param saldo El saldo a convertir.
+     * @param monedaAnterior La moneda previa a la conversión.
+     */
     public Convertir(String moneda, double saldo, String monedaAnterior) {
         this.moneda = moneda;
         this.saldo = saldo;
         this.monedaAnterior = monedaAnterior;
     }
     
+    /**
+     * Obtiene la moneda actual.
+     * 
+     * @return La moneda actual.
+     */
     public String getMonedaActual(){
         return moneda;
     }
 
+    /**
+     * Verifica si la moneda actual es válida.
+     * 
+     * @return {@code true} si la moneda es válida, {@code false} en caso contrario.
+     */
     private boolean habilitarMoneda() {
         switch (moneda) {
             case "Dolar" -> {
@@ -51,6 +76,11 @@ public class Convertir {
         }
     }
 
+    /**
+     * Verifica si la moneda anterior es válida.
+     * 
+     * @return {@code true} si la moneda anterior es válida, {@code false} en caso contrario.
+     */
     private boolean habilitarMonedaA() {
         switch (monedaAnterior) {
             case "Dolar" -> {
@@ -77,6 +107,11 @@ public class Convertir {
         }
     }
 
+    /**
+     * Asigna un valor monetario basado en la conversión de la moneda actual a la moneda anterior.
+     * 
+     * @return {@code true} si se pudo asignar un valor monetario, {@code false} en caso contrario.
+     */
     private boolean monedaValor() {
         if (monedaExiste()) {
             if (moneda.equals("Dolar")) {
@@ -215,6 +250,11 @@ public class Convertir {
         return false;
     }
 
+    /**
+     * Convierte el saldo de la moneda actual a la nueva moneda.
+     * 
+     * @return El nuevo saldo después de la conversión.
+     */
     public double convertirMoneda() {
         if (monedaValor()) {
             saldo = saldo / valorMonetario;
@@ -223,6 +263,11 @@ public class Convertir {
         return saldo;
     }
 
+    /**
+     * Obtiene la nueva moneda después de la conversión.
+     * 
+     * @return La nueva moneda si la conversión fue exitosa, de lo contrario, devuelve la moneda anterior.
+     */
     public String getNuevaMoneda() {
         if(monedaValor()){
             return moneda;
@@ -230,6 +275,11 @@ public class Convertir {
         return monedaAnterior;
     }
 
+    /**
+     * Verifica si la moneda actual y anterior son válidas.
+     * 
+     * @return {@code true} si ambas monedas existen, {@code false} en caso contrario.
+     */
     public boolean monedaExiste() {
         return habilitarMoneda() && habilitarMonedaA();
     }
