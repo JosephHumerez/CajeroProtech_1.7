@@ -17,7 +17,7 @@ Requisitos
   
 Instalación
   Clona este repositorio:
-    git clone https://github.com/JosephHumerez/CajeroProtech.git
+    git clone https://github.com/JosephHumerez/CajeroProtech_1.7
   Importa el proyecto en tu IDE:
     Usa NetBeans o cualquier otro IDE que soporte Java.
   Configura el JDK:
